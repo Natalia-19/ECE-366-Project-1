@@ -1,0 +1,49 @@
+module Testbench;
+    // Inputs
+    reg [31:0] A, B;
+    reg Cin;
+    // Outputs
+    wire [31:0] S;
+    wire Cout;
+
+    // Instantiate the 32-bit CLA module
+    CLA CLA_32bit (
+        .A(A),
+        .B(B),
+        .Cin(Cin),
+        .S(S),
+        .Cout(Cout)
+    );
+
+    initial begin
+        // Test case 1: Addition (small numbers)
+        A = 32'h00000005; B = 32'h00000003; Cin = 1'b0; // 5 + 3
+        #10;
+        $display("Addition (Small Numbers): A = %h, B = %h, Cin = %b, S = %h, Cout = %b", A, B, Cin, S, Cout);
+
+        // Test case 2: Subtraction (small numbers)
+        A = 32'h00000005; B = 32'h00000003; Cin = 1'b1; // 5 - 3
+        #10;
+        $display("Subtraction (Small Numbers): A = %h, B = %h, Cin = %b, S = %h, Cout = %b", A, B, Cin, S, Cout);
+
+        // Test case 3: Addition with carry-out (large numbers)
+        A = 32'hFFFFFFFF; B = 32'h00000001; Cin = 1'b0; // FFFFFFFF + 1
+        #10;
+        $display("Addition with Carry-Out: A = %h, B = %h, Cin = %b, S = %h, Cout = %b", A, B, Cin, S, Cout);
+
+        // Test case 4: Subtraction with borrow (small - large)
+        A = 32'h00000003; B = 32'h00000005; Cin = 1'b1; // 3 - 5
+        #10;
+        $display("Subtraction with Borrow: A = %h, B = %h, Cin = %b, S = %h, Cout = %b", A, B, Cin, S, Cout);
+
+        // Test case 5: Addition with carry-in (large numbers)
+        A = 32'h7FFFFFFF; B = 32'h7FFFFFFF; Cin = 1'b1; // 7FFFFFFF + 7FFFFFFF + 1
+        #10;
+        $display("Addition with Carry-In: A = %h, B = %h, Cin = %b, S = %h, Cout = %b", A, B, Cin, S, Cout);
+
+        // Test case 6: Subtraction with no borrow (large - small)
+        A = 32'hFFFFFFFF; B = 32'h00000001; Cin = 1'b1; // FFFFFFFF - 1
+        #10;
+        $display("Subtraction with No Borrow: A = %h, B = %h, Cin = %b, S = %h, Cout = %b", A, B, Cin, S, Cout);
+    end
+endmodule
