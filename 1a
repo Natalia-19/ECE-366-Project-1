@@ -4,7 +4,7 @@ module one_bit_full_adder(A, B, Cin, S,Cout);
  output S, Cout;
   
  
-  S= A ^ B ^ Cin;// ^ is the exclusive xor operation
-  Cout=(A & B) || (B & Cin) || (A & Cin);
+  assign S= A ^ B ^ Cin; // ^ is the exclusive xor operation
+  assign Cout = (A && B) || (B && Cin) || (A && Cin);
   
-  Endmodule
+endmodule
