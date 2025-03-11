@@ -1,4 +1,4 @@
-module Prefix_Adder;
+module Prefix_Adder_tb;
     reg [15:0] A, B;
     reg Cin;
   wire [15:0] Sum;
