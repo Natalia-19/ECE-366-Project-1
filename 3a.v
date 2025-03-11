@@ -1,4 +1,4 @@
-module PPA_16bit (A, B, Cin, Sum, Cout);
+module Prefix_Adder (A, B, Cin, Sum, Cout);
   
     input [15:0] A, B;
     input Cin;
