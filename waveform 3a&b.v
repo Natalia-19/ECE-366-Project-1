@@ -15,7 +15,7 @@ module Prefix_Adder_tb;
     );
 
     initial begin
-         $dumpfile("dump.vcd"); 
+        $dumpfile("dump.vcd"); 
 	$dumpvars;
       $monitor("A = %h, B = %h, Cin = %b, S = %h, Cout = %b", A, B, Cin, Sum, Cout);
         
