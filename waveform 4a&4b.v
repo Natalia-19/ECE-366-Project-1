@@ -15,7 +15,7 @@ module KSA_tb;
 
     initial begin
     $dumpfile("dump.vcd"); 
-	  $dumpvars;
+    $dumpvars;
 
         // Test Case 1
         A = 16'h0000; B = 16'h0000; Cin = 0;
