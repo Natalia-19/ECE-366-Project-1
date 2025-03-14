@@ -16,7 +16,7 @@ module testbench;
 
     initial begin
     $dumpfile("dump.vcd"); 
-	$dumpvars;
+    $dumpvars;
         // Test case 1
         A = 32'h0000_0001;
         B = 32'h0000_0001;
